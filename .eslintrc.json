@@ -1,10 +1,30 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:prettier/recommended",
-        "./node_modules/standard/eslintrc.json"
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
     ],
-    "rules": {
-        "space-before-function-paren": "off"
-    }
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
 }
