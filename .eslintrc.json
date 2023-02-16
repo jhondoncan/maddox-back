@@ -1,0 +1,10 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "./node_modules/standard/eslintrc.json"
+    ],
+    "rules": {
+        "space-before-function-paren": "off"
+    }
+}
