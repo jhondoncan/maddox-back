@@ -13,13 +13,7 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(express.json())
 
-app.use('/', authRoutes)
-
-app.get('/', (req, res) => {
-  res.json({
-    mensaje: 'Bienvenido a Maddox'
-  })
-})
+app.use('/api/v1/', authRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
