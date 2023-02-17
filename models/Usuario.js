@@ -18,7 +18,7 @@ const usuarioSchema = new Schema({
   rol: {
     type: String,
     required: true,
-    enum: ['adminatrador', 'usuario', 'trabajador', 'capataz'],
+    enum: ['administrador', 'usuario', 'trabajador', 'capataz'],
     default: 'trabajador'
   },
   correo: {
@@ -33,16 +33,18 @@ const usuarioSchema = new Schema({
     type: String,
     required: true
   }
-})
+
+}, { versionKey: false }
+)
 
 // Encriptar el password antes de guardar
-usuarioSchema.pre('save', function (next) {
+usuarioSchema.pre('save', async function (next) {
   const usuario = this
   if (!usuario.isModified('password')) return next()
 
   try {
-    const salt = bcrypt.genSalt(10)
-    usuario.password = bcrypt.hash(usuario.password, salt)
+    const salt = await bcrypt.genSalt(10)
+    usuario.password = await bcrypt.hash(usuario.password, salt)
     next()
   } catch (error) {
     console.log(error)
@@ -55,4 +57,4 @@ usuarioSchema.methods.compararPassword = async function (canidatoPassword) {
   return await bcrypt.compare(canidatoPassword, this.password)
 }
 
-export const Usuario = model('usuario', usuarioSchema)
+export const Usuario = model('Usuario', usuarioSchema)
