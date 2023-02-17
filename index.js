@@ -13,7 +13,7 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(express.json())
 
-app.use('/api/v1/', authRoutes)
+app.use('/api/v1/auth', authRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
