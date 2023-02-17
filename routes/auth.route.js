@@ -1,9 +1,9 @@
-import express from 'express'
+import { Router } from 'express'
 import { login, registro } from '../controllers/auth.controller.js'
 import { validacionExpress } from '../middlewares/validacionExpress.js'
 import { body } from 'express-validator'
 
-const router = express.Router()
+const router = Router()
 
 router.post('/login', [
   body('usuario', 'El usuario es obligatorio').trim().notEmpty().escape(),
