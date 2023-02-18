@@ -7,7 +7,6 @@ export const generarToken = (usuario) => {
 
 export const generarRefreshToken = (usuario) => {
     const refreshToken = jwt.sign({ id: usuario.id, nombres: usuario.nombres, rol: usuario.rol }, process.env.JWT_SECRET, { expiresIn: '1h' })
-
     // eslint-disable-next-line no-undef
     res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
